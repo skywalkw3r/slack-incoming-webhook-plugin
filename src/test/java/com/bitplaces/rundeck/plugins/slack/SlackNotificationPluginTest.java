@@ -198,7 +198,7 @@ public class SlackNotificationPluginTest {
     @Test
     void invokeSlackAPIMethod_reportsHttpStatusWhenErrorHasNoBody() throws Exception {
         com.sun.net.httpserver.HttpServer server =
-                com.sun.net.httpserver.HttpServer.create(new InetSocketAddress(InetAddress.getLoopbackAddress(), 0), 0);
+                com.sun.net.httpserver.HttpServer.create(new InetSocketAddress(InetAddress.getByName("127.0.0.1"), 0), 0);
         server.createContext("/", exchange -> {
             exchange.sendResponseHeaders(404, -1); // error status, no body
             exchange.close();
